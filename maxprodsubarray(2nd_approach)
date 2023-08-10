@@ -1,0 +1,14 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        prefix=1
+        sufix=1
+        maxprod=float('-inf')
+        for i in range(len(nums)):
+            if prefix==0:
+                prefix=1
+            if sufix==0:
+                sufix=1
+            prefix=prefix* nums[i]
+            sufix=sufix*nums[len(nums)-i-1]
+            maxprod=max(maxprod,max(prefix,sufix))
+        return maxprod
